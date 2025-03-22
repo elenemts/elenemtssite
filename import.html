@@ -133,158 +133,143 @@
       <div class="col-xs-12 col-lg-9 col-sm-9 col-md-9 pl-xl-5">
 
   
-        <form>
+        <form action="https://formspree.io/f/mjkyyqbw" method="POST">
           <div class="row pl-xl-5">
             <div class="col-lg-6 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="first_name" placeholder="First Name" required>
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-6 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">Last Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Last Name">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="last_name" placeholder="Last Name" required>
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-3 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-3 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="Gender" class="select">Gender</label>
-                <select class="form-control">
-                    <option>Male</option>
-                    <option>Female</option> 
-                  </select>
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-3 col-xs-12 col-sm-12">
+        
+            <div class="col-lg-3 col-xs-12 col-sm-12">
               <div class="form-group">
-                <label for="Gender" class="select">Select Service</label>
-                <select class="form-control">
-                    <option>Import</option>
-                    <option>Export</option> 
-                  </select>
+                <label for="service">Select Service</label>
+                <select class="form-control" id="service" name="service">
+                  <option>Import</option>
+                  <option>Export</option>
+                </select>
               </div>
             </div>
-<!--   
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12 col-sm-12">
+        
+            <div class="col-lg-3 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="Gender" class="select">Does the claimant have a Social Security Number?</label>
-                <select class="form-control">
-                    <option>Yes</option>
-                    <option>No</option> 
-                  </select>
+                <label for="gstin">GSTIN</label>
+                <input type="text" class="form-control" id="gstin" name="gstin" placeholder="">
               </div>
             </div>
-   -->
-            <div class="col-lg-offset-0 col-lg-3 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-3 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">GSTIN</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                <label for="productName">Product Name</label>
+                <input type="text" class="form-control" id="productName" name="product_name" placeholder="">
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-3 col-xs-12 col-sm-6">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Product Name</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-              </div>
-            </div>
-            
+        
             <div class="form-outline mb-4">
-              <label class="form-label" for="form6Example7">Product Details</label>
-              <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+              <label for="productDetails">Product Details</label>
+              <textarea class="form-control" id="productDetails" name="product_details" rows="4"></textarea>
             </div>
-
-            <label for="imageUpload">Upload an image of Product</label>
-            <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
-
-
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-6 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">Product Quantity</label>
-                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="">
+                <label for="productQuantity">Product Quantity</label>
+                <input type="number" class="form-control" id="productQuantity" name="product_quantity" placeholder="">
               </div>
             </div>
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12">
+        
+            <div class="col-lg-6 col-xs-12">
               <div class="form-group">
-                <label for="exampleInputEmail1">Delivery Address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Street Number and Name or P.O. Box">
+                <label for="address">Delivery Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Street Number and Name or P.O. Box">
               </div>
             </div>
-  
-  
-            <div class="col-lg-offset-0 col-lg-4 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-4 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Sacramento">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Sacramento">
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-2 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-2 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">State</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="CA">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="CA">
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-6 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">Zip Code</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="958252">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="958252">
               </div>
             </div>
-  
-  
-            <div class="col-lg-offset-0 col-lg-6 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-6 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">Phone Number</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="93133 83425">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="93133 83425">
               </div>
             </div>
-            
-            <div class="col-lg-offset-0 col-lg-2 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-2 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="Gender" class="select">E-Mail Type</label>
-                <select class="form-control">
-                    <option>Personal</option>
-                    <option>Work</option> 
-                  </select>
+                <label for="emailType">E-Mail Type</label>
+                <select class="form-control" id="emailType" name="email_type">
+                  <option>Personal</option>
+                  <option>Work</option>
+                </select>
               </div>
             </div>
-
-            <div class="col-lg-offset-0 col-lg-4 col-xs-12 col-sm-6">
+        
+            <div class="col-lg-4 col-xs-12 col-sm-6">
               <div class="form-group">
-                <label for="exampleInputEmail1">E-Mail</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="contact@elenemts.com">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="contact@elenemts.com" required>
               </div>
             </div>
-  
-  
-            <div class="col-lg-offset-0 col-lg-12 col-xs-12">
+        
+            <div class="col-lg-12 col-xs-12">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="">
-                  From the date of the crime to now, has the claimant been in prison, on probation, on parole or post-release community supervision because of a felony? </label>
+                  <input type="checkbox" name="term_1" value="yes">
+                   I acknowledge that all transactions are final, with no returns or refunds, and I have reviewed and agree to the terms and conditions.
+                </label>
               </div>
             </div>
-  
-            <div class="col-lg-offset-0 col-lg-12 col-xs-12">
+        
+            <div class="col-lg-12 col-xs-12">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" value="">
-                  Is the claimant required to register as a sex offender?
+                  <input type="checkbox" name="term_2" value="yes">
+                  I confirm that all information provided is accurate and complete to the best of my knowledge
                 </label>
               </div>
             </div>
           </div><!--/ Row-->
-          <button class="btn btn-primary ">Submit</button>
+        
+          <button class="btn btn-dark">Submit</button>
           <hr>
-  
-      
         </form>
+        
   
       </div> <!-- /Main Content -->
   </div>
@@ -374,7 +359,7 @@
   <!-- Grid container -->
 
       <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      <div class="text-center p-3 text-black" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2025 Copyright:
         <a class="text-link" href="https://elenemts.com/">elenemts</a>
       </div>
