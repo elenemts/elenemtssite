@@ -16,7 +16,8 @@
     
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/blogs/blog-3/assets/css/blog-3.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="icon" href="images/no-bg-elenemts.png" type="image/x-icon">
@@ -141,6 +142,9 @@
         </div>
       </div>
     
+
+      <!-- services -->
+       
       <div class="container px-4 py-5" id="services">
         <h2 class="pb-2 border-bottom">Services</h2>
     
@@ -227,70 +231,154 @@
           </div>
         </div>
       </div>
-    
+  
+
+
     <!-- 2 blogs-->
     
-    <div class="container px-4 py-5" id="blogs">
-        <h2 class="pb-2 border-bottom">Blogs</h2>
-       
-
-
-        <div class="row mb-2 pt-2">
-          <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary-emphasis">Info</strong>
-                <h3 class="mb-0">Photobooth which makes memories</h3>
-                <div class="mb-1 text-body-secondary">Nov 12</div>
-                <p class="card-text mb-auto text-black">Picture this: Your event is in full swing, laughter fills the air, and memori...</p>
-                <a href="photBlog.html" class="icon-link gap-1 icon-link-hover stretched-link">
-                  Continue reading
-                  <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-                </a>
-              </div>
-              <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              </div>
+      <section class="py-3 py-md-5">
+        <div class="container overflow-hidden">
+          <h2 class="pb-2 border-bottom">Blogs</h2>
+          <div class="row gy-4 gy-lg-0 pb-xl-5 pt-4">
+            <div class="col-12 col-lg-4">
+              <article>
+                <div class="card border-0">
+                  <figure class="card-img-top m-0 overflow-hidden bsb-overlay-hover">
+                    <a href="photBlog.html">
+                      <img class="img-fluid bsb-scale bsb-hover-scale-up" loading="lazy" src="images/SalsaPromoWebRes141.jpg" alt="Business">
+                    </a>
+                    <figcaption>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-eye text-white bsb-hover-fadeInLeft" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                      </svg>
+                      <h4 class="h6 text-white bsb-hover-fadeInRight mt-2">Read More</h4>
+                    </figcaption>
+                  </figure>
+                  <div class="card-body border bg-white p-4">
+                    <div class="entry-header mb-3">
+                      <ul class="entry-meta list-unstyled d-flex mb-2">
+                        <li>
+                          <a class="link-primary text-decoration-none" href="photBlog.html">Rental Service</a>
+                        </li>
+                      </ul>
+                      <h2 class="card-title entry-title h4 mb-0">
+                        <a class="link-dark text-decoration-none" href="photBlog.html">Read About Our Photobooth</a>
+                      </h2>
+                    </div>
+                    <p class="card-text entry-summary text-secondary">
+                      Picture this: Your event is in full swing, laughter fills the air, and memories are being made. But how can you capture these precio...                    </p>
+                  </div>
+                  <div class="card-footer border border-top-0 bg-white p-4">
+                    <ul class="entry-meta list-unstyled d-flex align-items-center m-0">
+                      <li>
+                        <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                          </svg>
+                          <span class="ms-2 fs-7">7 Feb 2023</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-success-emphasis">Info</strong>
-                <h3 class="mb-0">Our Store</h3>
-                <div class="mb-1 text-body-secondary">Nov 11</div>
-                <p class="mb-auto text-black">Welcome to our online eCommerce store, your one-stop destination for high-quality products that bring convenience, style, and ...</p>
-                <a href="eComBlog.html" class="icon-link gap-1 icon-link-hover stretched-link">
-                  Continue reading
-                  <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-                </a>
-              </div>
-              <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              </div>
+            <div class="col-12 col-lg-4">
+              <article>
+                <div class="card border-0">
+                  <figure class="card-img-top m-0 overflow-hidden bsb-overlay-hover">
+                    <a href="importBlog.html">
+                      <img class="img-fluid bsb-scale bsb-hover-scale-up" loading="lazy" src="images/importexport.jpg" alt="Nutrition">
+                    </a>
+                    <figcaption>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-eye text-white bsb-hover-fadeInDown" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                      </svg>
+                      <h4 class="h6 text-white bsb-hover-fadeInUp mt-2">Read More</h4>
+                    </figcaption>
+                  </figure>
+                  <div class="card-body border bg-white p-4">
+                    <div class="entry-header mb-3">
+                      <ul class="entry-meta list-unstyled d-flex mb-2">
+                        <li>
+                          <a class="link-primary text-decoration-none" href="importBlog.html">Nutrition</a>
+                        </li>
+                      </ul>
+                      <h2 class="card-title entry-title h4 mb-0">
+                        <a class="link-dark text-decoration-none" href="importBlog.html">Read Import/Export</a>
+                      </h2>
+                    </div>
+                    <p class="card-text entry-summary text-secondary">
+                      The world of international trade is full of opportunities, but navigating the complexities of import and export can be chall...
+                    </p>
+                  </div>
+                  <div class="card-footer border border-top-0 bg-white p-4">
+                    <ul class="entry-meta list-unstyled d-flex align-items-center m-0">
+                      <li>
+                        <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                          </svg>
+                          <span class="ms-2 fs-7">12 Aug 2023</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
             </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-              <div class="col p-4 d-flex flex-column position-static">
-                <strong class="d-inline-block mb-2 text-primary-emphasis">Info</strong>
-                <h3 class="mb-0">Read about our Import/Export </h3>
-                <div class="mb-1 text-body-secondary">Nov 12</div>
-                <p class="card-text mb-auto text-black">The world of international trade is full of opportunities, but navigating the complexities of import and export can be chall...</p>
-                <a href="importBlog.html" class="icon-link gap-1 icon-link-hover stretched-link">
-                  Continue reading
-                  <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-                </a>
-              </div>
-              <div class="col-auto d-none d-lg-block">
-                <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-              </div>
+            <div class="col-12 col-lg-4">
+              <article>
+                <div class="card border-0">
+                  <figure class="card-img-top m-0 overflow-hidden bsb-overlay-hover">
+                    <a href="eComBlog.html">
+                      <img class="img-fluid bsb-scale bsb-hover-scale-up" loading="lazy" src="images/shutter-speed-BQ9usyzHx_w-unsplash.jpg" alt="Business">
+                    </a>
+                    <figcaption>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-eye text-white bsb-hover-fadeInLeft" viewBox="0 0 16 16">
+                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
+                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
+                      </svg>
+                      <h4 class="h6 text-white bsb-hover-fadeInRight mt-2">Read More</h4>
+                    </figcaption>
+                  </figure>
+                  <div class="card-body border bg-white p-4">
+                    <div class="entry-header mb-3">
+                      <ul class="entry-meta list-unstyled d-flex mb-2">
+                        <li>
+                          <a class="link-primary text-decoration-none" href="eComBlog.html">Rental Service</a>
+                        </li>
+                      </ul>
+                      <h2 class="card-title entry-title h4 mb-0">
+                        <a class="link-dark text-decoration-none" href="eComBlog.html">Read our E-Com Store</a>
+                      </h2>
+                    </div>
+                    <p class="card-text entry-summary text-secondary">
+                      Welcome to our online eCommerce store, your one-stop destination for high-quality products that bring convenience, style, and inno..                    </p>
+                  </div>
+                  <div class="card-footer border border-top-0 bg-white p-4">
+                    <ul class="entry-meta list-unstyled d-flex align-items-center m-0">
+                      <li>
+                        <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                          </svg>
+                          <span class="ms-2 fs-7">7 Feb 2023</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
-    </div>
-      
+      </section>
     
     <!-- 3 contact -->
     <div>
