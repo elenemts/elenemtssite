@@ -38,9 +38,12 @@
       margin-bottom: 1.5rem;
     }
 
-    .btn-success {
-      background-color: #28a745;
-      border-color: #28a745;
+    #selectedDate {
+      color: black;
+    }
+
+    #inlineDatePicker {
+      display: none;
     }
   </style>
 
@@ -51,7 +54,7 @@
   <div class="container mt-3 mb-3">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <div class="form-container ">
+        <div class="form-container">
           <h3 class="form-title text-dark">Photobooth Booking Form</h3>
           <form id="bookingForm">
             <div class="mb-3">
@@ -67,7 +70,8 @@
 
             <div class="mb-3">
               <label for="plan" class="form-label">Select Plan</label>
-              <select id="plan" class="form-select">
+              <select id="plan" class="form-select" required>
+                <option value="">Select a plan</option>
                 <option value="basic">Basic</option>
                 <option value="pro">Pro</option>
                 <option value="ultra">Ultra</option>
@@ -77,8 +81,9 @@
             <div class="mb-3">
               <label for="datepicker" class="form-label">Select a Date</label>
               <input type="hidden" id="datepicker" required>
-              <div id="inlineDatePicker" class="border rounded p-2"></div>
-              <div id="selectedDate" class="mt-2 text-success"></div>
+              <button type="button" id="chooseDateButton" class="btn btn-outline-primary">Choose Date</button>
+              <div id="inlineDatePicker"></div>
+              <div id="selectedDate" class="mt-2 text-black"></div>
             </div>
 
             <div class="mb-3">
@@ -96,22 +101,25 @@
               <label for="address" class="form-label">Address</label>
               <input type="text" id="address" class="form-control" placeholder="Full address" readonly>
             </div>
+
             <div class="col-lg-12 col-xs-12">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="term_1" value="yes">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms1" required>
+                <label class="form-check-label" for="terms1">
                   I acknowledge that all transactions are final, with no returns or refunds, and I have reviewed and agree to the terms and conditions.
                 </label>
               </div>
             </div>
+
             <div class="col-lg-12 col-xs-12 pt-2">
-              <div class="checkbox pl-2">
-                <label>
-                  <input type="checkbox" name="term_2" value="yes">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms2" required>
+                <label class="form-check-label" for="terms2">
                   I confirm that all information provided is accurate and complete to the best of my knowledge.
                 </label>
               </div>
             </div>
+
             <div>
               <button type="submit" class="btn btn-outline-dark mt-3">Confirm Booking</button>
             </div>
@@ -132,7 +140,7 @@
 
   <script>
     $(document).ready(function () {
-      let bookedDates = [];
+      const bookedDates = ['03/28/2025', '03/29/2025'];
 
       const inlineDatePicker = $('#inlineDatePicker').datepicker({
         format: 'mm/dd/yyyy',
@@ -164,33 +172,22 @@
         $('#selectedDate').text(`Selected Date: ${selectedDate}`);
       });
 
+      $('#chooseDateButton').click(function () {
+        $('#inlineDatePicker').toggle();
+      });
+
       $('#bookingForm').submit(function (event) {
         event.preventDefault();
 
         const selectedDate = $('#datepicker').val();
-        if (!selectedDate) {
-          alert('Please select a date.');
-          return;
-        }
-
         const name = $('#name').val();
         const contact = $('#contact').val();
         const plan = $('#plan').val();
         const streetName = $('#streetName').val();
         const address = $('#address').val();
 
-        if (!plan) {
-          alert('Please select a plan.');
-          return;
-        }
-
-        if (!streetName || !address) {
-          alert('Please select a location.');
-          return;
-        }
-
-        if (bookedDates.includes(selectedDate)) {
-          alert('This date is already booked.');
+        if (!selectedDate || !plan || !streetName || !address) {
+          alert('Please fill out all required fields.');
           return;
         }
 
@@ -201,15 +198,13 @@
           `Booking Confirmed!\n\nDetails:\nName: ${name}\nContact: ${contact}\nPlan: ${plan}\nDate: ${selectedDate}\nStreet: ${streetName}\nAddress: ${address}`
         );
 
-        $('#name, #contact, #datepicker, #selectedDate').val('');
-        $('#plan').val('');
+        $('#bookingForm')[0].reset();
+        $('#selectedDate').text('');
       });
 
-      // Google Maps Integration
-      let map, marker, autocomplete;
-
+      let map, marker;
       function initMap() {
-        const initialLocation = { lat: 20.5937, lng: 78.9629 }; // Center of India
+        const initialLocation = { lat: 20.5937, lng: 78.9629 };
 
         map = new google.maps.Map(document.getElementById("map"), {
           center: initialLocation,
@@ -223,10 +218,9 @@
         });
 
         const locationInput = document.getElementById("locationInput");
-        autocomplete = new google.maps.places.Autocomplete(locationInput);
+        const autocomplete = new google.maps.places.Autocomplete(locationInput);
         autocomplete.bindTo("bounds", map);
 
-        // On place change, update the map and form
         autocomplete.addListener("place_changed", () => {
           const place = autocomplete.getPlace();
           if (!place.geometry || !place.geometry.location) {
@@ -242,7 +236,6 @@
           fillLocationDetails(place);
         });
 
-        // On map click, update the marker and form
         map.addListener("click", (event) => {
           const clickedLocation = event.latLng;
           map.setCenter(clickedLocation);
@@ -259,7 +252,6 @@
         });
       }
 
-      // Fill form fields with location details
       function fillLocationDetails(place) {
         const components = place.address_components || [];
         const street = components.find(c => c.types.includes("route"))?.long_name || "N/A";
@@ -270,21 +262,119 @@
       }
 
       initMap();
+
     });
   </script>
-      <script>
-        // Function to get query parameters
-        function getQueryParam(param) {
-          const urlParams = new URLSearchParams(window.location.search);
-          return urlParams.get(param);
+    </script>
+    <script>
+      // Function to get query parameters
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+  
+      // Set the dropdown value based on the query parameter
+      const selectedPlan = getQueryParam('plan');
+      if (selectedPlan) {
+        const planDropdown = document.getElementById('plan');
+        planDropdown.value = selectedPlan;
+      }
+    </script>
+    <!-- Add this to the existing script -->
+<script>
+  $(document).ready(function () {
+    // Sample booked dates in MM/DD/YYYY format
+    let bookedDates = ['03/28/2025', '03/29/2025']; // Replace these with dynamic values as needed
+
+    // Initialize Datepicker
+    const inlineDatePicker = $('#inlineDatePicker').datepicker({
+      format: 'mm/dd/yyyy',
+      todayHighlight: true,
+      startDate: '0d',
+      beforeShowDay: function (date) {
+        const dateString =
+          ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+          ('0' + date.getDate()).slice(-2) + '/' +
+          date.getFullYear();
+
+        if (bookedDates.includes(dateString)) {
+          return {
+            classes: 'booked-date',
+            tooltip: 'Already booked'
+          };
         }
-    
-        // Set the dropdown value based on the query parameter
-        const selectedPlan = getQueryParam('plan');
-        if (selectedPlan) {
-          const planDropdown = document.getElementById('plan');
-          planDropdown.value = selectedPlan;
+        return { enabled: true };
+      }
+    });
+
+    // Handle Date Selection
+    inlineDatePicker.on('changeDate', function (e) {
+      const selectedDate = e.format(0, 'mm/dd/yyyy');
+      if (bookedDates.includes(selectedDate)) {
+        alert('This date is already booked.');
+        return;
+      }
+      $('#datepicker').val(selectedDate);
+      $('#selectedDate').text(`Selected Date: ${selectedDate}`);
+    });
+
+    // Submit Form
+    $('#bookingForm').submit(function (event) {
+      event.preventDefault();
+
+      const selectedDate = $('#datepicker').val();
+      if (!selectedDate) {
+        alert('Please select a date.');
+        return;
+      }
+
+      const name = $('#name').val();
+      const contact = $('#contact').val();
+      const plan = $('#plan').val();
+      const streetName = $('#streetName').val();
+      const address = $('#address').val();
+
+      if (!plan) {
+        alert('Please select a plan.');
+        return;
+      }
+
+      if (!streetName || !address) {
+        alert('Please select a location.');
+        return;
+      }
+
+      if (bookedDates.includes(selectedDate)) {
+        alert('This date is already booked.');
+        return;
+      }
+
+      // Add selected date to bookedDates
+      bookedDates.push(selectedDate);
+      inlineDatePicker.datepicker('update');
+
+      alert(
+        `Booking Confirmed!\n\nDetails:\nName: ${name}\nContact: ${contact}\nPlan: ${plan}\nDate: ${selectedDate}\nStreet: ${streetName}\nAddress: ${address}`
+      );
+
+      // Reset form fields
+      $('#name, #contact, #datepicker').val('');
+      $('#plan').val('');
+      $('#selectedDate').text('');
+    });
+
+    // Ensure 'booked-date' class styles work
+    const bookedDateStyles = `
+      <style>
+        .booked-date {
+          background-color: #f8d7da !important; /* Light red background */
+          color: #721c24 !important;           /* Dark red text */
+          pointer-events: none;                /* Make it non-clickable */
         }
-      </script>
+      </style>`;
+    $('head').append(bookedDateStyles);
+  });
+</script>
+
 </body>
 </html>
