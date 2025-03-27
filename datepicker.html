@@ -136,11 +136,16 @@
   <!-- Script -->
   <script>
     $(document).ready(function () {
-      const bookedDates = ['03/28/2025', '03/29/2025'];
+
+
+      // custom date add
+      const bookedDates = ['03/28/2025', '03/2/2025'];
+
+
 
       // Initialize Datepicker
       const datePicker = $('#inlineDatePicker').datepicker({
-        format: 'mm/dd/yyyy',
+        format: 'dd/mm/yyyy',
         todayHighlight: true,
         startDate: '0d',
         beforeShowDay: function (date) {
@@ -157,7 +162,7 @@
       });
 
       datePicker.on('changeDate', function (e) {
-        const selectedDate = e.format(0, 'mm/dd/yyyy');
+        const selectedDate = e.format(0, 'dd/mm/yyyy');
         if (bookedDates.includes(selectedDate)) {
           alert('This date is already booked.');
         } else {
