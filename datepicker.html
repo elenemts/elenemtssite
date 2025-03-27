@@ -272,5 +272,19 @@
       initMap();
     });
   </script>
+      <script>
+        // Function to get query parameters
+        function getQueryParam(param) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(param);
+        }
+    
+        // Set the dropdown value based on the query parameter
+        const selectedPlan = getQueryParam('plan');
+        if (selectedPlan) {
+          const planDropdown = document.getElementById('plan');
+          planDropdown.value = selectedPlan;
+        }
+      </script>
 </body>
 </html>
