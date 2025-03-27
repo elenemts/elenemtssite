@@ -56,21 +56,22 @@
       <div class="col-md-8">
         <div class="form-container">
           <h3 class="form-title text-dark">Photobooth Booking Form</h3>
-          <form id="bookingForm">
+          <form id="bookingForm" action="https://formspree.io/f/xwplnepg" method="POST">
+            <!-- Form fields -->
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" required>
             </div>
 
             <div class="mb-3">
               <label for="contact" class="form-label">Contact Number</label>
-              <input type="tel" class="form-control" id="contact" placeholder="Enter your contact number" required pattern="[0-9]{10}">
+              <input type="tel" class="form-control" id="contact" placeholder="Enter your contact number" name="contact" required pattern="[0-9]{10}">
               <small class="form-text text-muted">Enter a 10-digit mobile number.</small>
             </div>
 
             <div class="mb-3">
               <label for="plan" class="form-label">Select Plan</label>
-              <select id="plan" class="form-select" required>
+              <select id="plan" class="form-select" name="plan" required>
                 <option value="">Select a plan</option>
                 <option value="basic">Basic</option>
                 <option value="pro">Pro</option>
@@ -80,7 +81,7 @@
 
             <div class="mb-3">
               <label for="datepicker" class="form-label">Select a Date</label>
-              <input type="hidden" id="datepicker" required>
+              <input type="hidden" id="datepicker" name="date" required>
               <button type="button" id="chooseDateButton" class="btn btn-outline-primary">Choose Date</button>
               <div id="inlineDatePicker"></div>
               <div id="selectedDate" class="mt-2 text-black"></div>
@@ -88,41 +89,35 @@
 
             <div class="mb-3">
               <label for="locationInput" class="form-label">Search Location</label>
-              <input type="text" id="locationInput" class="form-control mb-2" placeholder="Search for a location">
+              <input type="text" id="locationInput" name="location" class="form-control mb-2" placeholder="Search for a location">
               <div id="map"></div>
             </div>
 
             <div class="mb-3">
               <label for="streetName" class="form-label">Street Name</label>
-              <input type="text" id="streetName" class="form-control" placeholder="Street name" readonly>
+              <input type="text" id="streetName" name="streetName" class="form-control" placeholder="Street name" readonly>
             </div>
 
             <div class="mb-3">
               <label for="address" class="form-label">Address</label>
-              <input type="text" id="address" class="form-control" placeholder="Full address" readonly>
+              <input type="text" id="address" name="address" class="form-control" placeholder="Full address" readonly>
             </div>
 
-            <div class="col-lg-12 col-xs-12">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terms1" required>
-                <label class="form-check-label" for="terms1">
-                  I acknowledge that all transactions are final, with no returns or refunds, and I have reviewed and agree to the terms and conditions.
-                </label>
-              </div>
+            <!-- Terms -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms1" required>
+              <label class="form-check-label" for="terms1">
+                I acknowledge all transactions are final with no refunds, and I agree to the terms and conditions.
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms2" required>
+              <label class="form-check-label" for="terms2">
+                I confirm that all information provided is accurate and complete.
+              </label>
             </div>
 
-            <div class="col-lg-12 col-xs-12 pt-2">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terms2" required>
-                <label class="form-check-label" for="terms2">
-                  I confirm that all information provided is accurate and complete to the best of my knowledge.
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <button type="submit" class="btn btn-outline-dark mt-3">Confirm Booking</button>
-            </div>
+            <button type="submit" class="btn btn-outline-dark mt-3">Confirm Booking</button>
           </form>
         </div>
       </div>
@@ -138,11 +133,13 @@
   <!-- Bootstrap Datepicker JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
+  <!-- Script -->
   <script>
     $(document).ready(function () {
       const bookedDates = ['03/28/2025', '03/29/2025'];
 
-      const inlineDatePicker = $('#inlineDatePicker').datepicker({
+      // Initialize Datepicker
+      const datePicker = $('#inlineDatePicker').datepicker({
         format: 'mm/dd/yyyy',
         todayHighlight: true,
         startDate: '0d',
@@ -153,60 +150,30 @@
             date.getFullYear();
 
           if (bookedDates.includes(dateString)) {
-            return {
-              classes: 'booked-date',
-              tooltip: 'Already booked'
-            };
+            return { classes: 'booked-date', tooltip: 'Already booked' };
           }
           return true;
         }
       });
 
-      inlineDatePicker.on('changeDate', function (e) {
+      datePicker.on('changeDate', function (e) {
         const selectedDate = e.format(0, 'mm/dd/yyyy');
         if (bookedDates.includes(selectedDate)) {
           alert('This date is already booked.');
-          return;
+        } else {
+          $('#datepicker').val(selectedDate);
+          $('#selectedDate').text(`Selected Date: ${selectedDate}`);
         }
-        $('#datepicker').val(selectedDate);
-        $('#selectedDate').text(`Selected Date: ${selectedDate}`);
       });
 
-      $('#chooseDateButton').click(function () {
-        $('#inlineDatePicker').toggle();
-      });
+      $('#chooseDateButton').click(() => $('#inlineDatePicker').toggle());
 
-      $('#bookingForm').submit(function (event) {
-        event.preventDefault();
-
-        const selectedDate = $('#datepicker').val();
-        const name = $('#name').val();
-        const contact = $('#contact').val();
-        const plan = $('#plan').val();
-        const streetName = $('#streetName').val();
-        const address = $('#address').val();
-
-        if (!selectedDate || !plan || !streetName || !address) {
-          alert('Please fill out all required fields.');
-          return;
-        }
-
-        bookedDates.push(selectedDate);
-        inlineDatePicker.datepicker('update');
-
-        alert(
-          `Booking Confirmed!\n\nDetails:\nName: ${name}\nContact: ${contact}\nPlan: ${plan}\nDate: ${selectedDate}\nStreet: ${streetName}\nAddress: ${address}`
-        );
-
-        $('#bookingForm')[0].reset();
-        $('#selectedDate').text('');
-      });
-
+      // Google Maps Integration
       let map, marker;
       function initMap() {
         const initialLocation = { lat: 20.5937, lng: 78.9629 };
 
-        map = new google.maps.Map(document.getElementById("map"), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: initialLocation,
           zoom: 5,
         });
@@ -217,55 +184,43 @@
           draggable: true,
         });
 
-        const locationInput = document.getElementById("locationInput");
+        const locationInput = document.getElementById('locationInput');
         const autocomplete = new google.maps.places.Autocomplete(locationInput);
-        autocomplete.bindTo("bounds", map);
+        autocomplete.bindTo('bounds', map);
 
-        autocomplete.addListener("place_changed", () => {
+        autocomplete.addListener('place_changed', () => {
           const place = autocomplete.getPlace();
-          if (!place.geometry || !place.geometry.location) {
-            alert("No location selected.");
-            return;
+          if (place.geometry) {
+            map.setCenter(place.geometry.location);
+            map.setZoom(15);
+            marker.setPosition(place.geometry.location);
+            fillLocationDetails(place);
           }
-
-          const location = place.geometry.location;
-          map.setCenter(location);
-          map.setZoom(15);
-          marker.setPosition(location);
-
-          fillLocationDetails(place);
         });
 
-        map.addListener("click", (event) => {
+        map.addListener('click', (event) => {
           const clickedLocation = event.latLng;
           map.setCenter(clickedLocation);
           marker.setPosition(clickedLocation);
-
           const geocoder = new google.maps.Geocoder();
           geocoder.geocode({ location: clickedLocation }, (results, status) => {
-            if (status === "OK" && results[0]) {
+            if (status === 'OK' && results[0]) {
               fillLocationDetails(results[0]);
-            } else {
-              alert("Unable to retrieve location details.");
             }
           });
         });
       }
 
       function fillLocationDetails(place) {
-        const components = place.address_components || [];
-        const street = components.find(c => c.types.includes("route"))?.long_name || "N/A";
-        const address = place.formatted_address || "N/A";
-
+        const street = place.address_components?.find(c => c.types.includes('route'))?.long_name || '';
+        const address = place.formatted_address || '';
         $('#streetName').val(street);
         $('#address').val(address);
       }
 
       initMap();
-
     });
   </script>
-    </script>
     <script>
       // Function to get query parameters
       function getQueryParam(param) {
@@ -280,101 +235,5 @@
         planDropdown.value = selectedPlan;
       }
     </script>
-    <!-- Add this to the existing script -->
-<script>
-  $(document).ready(function () {
-    // Sample booked dates in MM/DD/YYYY format
-    let bookedDates = ['03/28/2025', '03/29/2025']; // Replace these with dynamic values as needed
-
-    // Initialize Datepicker
-    const inlineDatePicker = $('#inlineDatePicker').datepicker({
-      format: 'mm/dd/yyyy',
-      todayHighlight: true,
-      startDate: '0d',
-      beforeShowDay: function (date) {
-        const dateString =
-          ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
-          ('0' + date.getDate()).slice(-2) + '/' +
-          date.getFullYear();
-
-        if (bookedDates.includes(dateString)) {
-          return {
-            classes: 'booked-date',
-            tooltip: 'Already booked'
-          };
-        }
-        return { enabled: true };
-      }
-    });
-
-    // Handle Date Selection
-    inlineDatePicker.on('changeDate', function (e) {
-      const selectedDate = e.format(0, 'mm/dd/yyyy');
-      if (bookedDates.includes(selectedDate)) {
-        alert('This date is already booked.');
-        return;
-      }
-      $('#datepicker').val(selectedDate);
-      $('#selectedDate').text(`Selected Date: ${selectedDate}`);
-    });
-
-    // Submit Form
-    $('#bookingForm').submit(function (event) {
-      event.preventDefault();
-
-      const selectedDate = $('#datepicker').val();
-      if (!selectedDate) {
-        alert('Please select a date.');
-        return;
-      }
-
-      const name = $('#name').val();
-      const contact = $('#contact').val();
-      const plan = $('#plan').val();
-      const streetName = $('#streetName').val();
-      const address = $('#address').val();
-
-      if (!plan) {
-        alert('Please select a plan.');
-        return;
-      }
-
-      if (!streetName || !address) {
-        alert('Please select a location.');
-        return;
-      }
-
-      if (bookedDates.includes(selectedDate)) {
-        alert('This date is already booked.');
-        return;
-      }
-
-      // Add selected date to bookedDates
-      bookedDates.push(selectedDate);
-      inlineDatePicker.datepicker('update');
-
-      alert(
-        `Booking Confirmed!\n\nDetails:\nName: ${name}\nContact: ${contact}\nPlan: ${plan}\nDate: ${selectedDate}\nStreet: ${streetName}\nAddress: ${address}`
-      );
-
-      // Reset form fields
-      $('#name, #contact, #datepicker').val('');
-      $('#plan').val('');
-      $('#selectedDate').text('');
-    });
-
-    // Ensure 'booked-date' class styles work
-    const bookedDateStyles = `
-      <style>
-        .booked-date {
-          background-color: #f8d7da !important; /* Light red background */
-          color: #721c24 !important;           /* Dark red text */
-          pointer-events: none;                /* Make it non-clickable */
-        }
-      </style>`;
-    $('head').append(bookedDateStyles);
-  });
-</script>
-
 </body>
 </html>
