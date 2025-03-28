@@ -57,6 +57,11 @@
         <div class="form-container">
           <h3 class="form-title text-dark">Photobooth Booking Form</h3>
           <form id="bookingForm" action="https://formspree.io/f/xwplnepg" method="POST">
+            <style>
+              .form-control{
+                border-radius: 0px;
+              }
+            </style>
             <!-- Form fields -->
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
@@ -71,7 +76,7 @@
 
             <div class="mb-3">
               <label for="plan" class="form-label">Select Plan</label>
-              <select id="plan" class="form-select" name="plan" required>
+              <select id="plan" class="form-select" name="plan" required style="border-radius: 0px;">
                 <option value="">Select a plan</option>
                 <option value="basic">Basic</option>
                 <option value="pro">Pro</option>
@@ -117,7 +122,7 @@
               </label>
             </div>
 
-            <button type="submit" class="btn btn-outline-dark mt-3">Confirm Booking</button>
+            <button type="submit" class="btn btn-outline-dark mt-3" style="border-radius: 0px;">Confirm Booking</button>
           </form>
         </div>
       </div>
