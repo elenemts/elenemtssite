@@ -244,7 +244,7 @@ a {
 	transition: .3s all ease-in-out;
 
 	.offcanvas-menu & {
-		transform: translateX(0%);
+		transform: translateX(100%);
 	}
 
 	.site-mobile-menu-header {
